@@ -1,23 +1,31 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 
-const AnimatedCard = ({img, classes}) => {
+const AnimatedCard = ({img, color, classes}) => {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: '-200px' });
+
   return (
     <div 
+      ref={ref}
       className={`relative mx-auto mt-4 sm:mt-10 rounded-t-full overflow-hidden ${classes}`}
     >
       {/* Border Animation Layer */}
       <motion.div
         className="absolute inset-0 rounded-t-full pointer-events-none z-10"
         initial={{
-          borderWidth: '195px',
-          borderColor: '#8b6642',
+          borderWidth: '135px',
+          borderColor: color,
           opacity: 1
         }}
-        animate={{
+        animate={inView ? {
           borderWidth: '0px',
-          borderColor: '#8b6642',
+          borderColor: color,
           opacity: 0
+        } : {
+          borderWidth: '135px',
+          borderColor: color,
+          opacity: 1
         }}
         transition={{
           duration: 1.6,
@@ -39,7 +47,7 @@ const AnimatedCard = ({img, classes}) => {
         alt="Animated"
         className="absolute inset-0 w-full h-full object-cover rounded-t-full z-0"
         initial={{ scale: 1.36 }}
-        animate={{ scale: 1 }}
+        animate={inView ? { scale: 1 } : { scale: 1.36 }}
         transition={{
           duration: 1.6,
           delay: 0.1,

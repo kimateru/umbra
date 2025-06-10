@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 
-const Navbar = ({ text }) => {
+const Navbar = ({ text, isScrolled }) => {
   const controls = useAnimation();
   const pathRef = useRef(null);
   const [pathLength, setPathLength] = useState(0);
@@ -32,7 +32,13 @@ const Navbar = ({ text }) => {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <span style={{ fontSize: '17px', fontWeight: '500', color: '#333', position: 'relative', zIndex: 2 }}>
+      <span style={{ 
+        fontSize: '17px', 
+        fontWeight: '500', 
+        color: isScrolled ? '#333a3e' : 'white',
+        position: 'relative', 
+        zIndex: 2 
+      }}>
         {text}
       </span>
 

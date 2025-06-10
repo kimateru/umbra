@@ -1,51 +1,90 @@
 import React, { useState, useEffect } from 'react'
 import NavbarItem from './NavbarItem'
-import { FiMenu } from 'react-icons/fi'
+import { FiMenu, FiPhone, FiMapPin } from 'react-icons/fi'
+import { FaInstagram, FaFacebookF } from 'react-icons/fa'
 import MobileMenu from './MobileMenu'
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
   const items = [
     'About',
     'Menu',
     'Contact'
   ]
 
-  // Scroll lock effect
+  // Scroll effect
   useEffect(() => {
-    if (menuOpen) {
-      document.body.classList.add('overflow-hidden')
-    } else {
-      document.body.classList.remove('overflow-hidden')
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY
+      setIsScrolled(scrollPosition > 50)
     }
-    return () => document.body.classList.remove('overflow-hidden')
-  }, [menuOpen])
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   return (
-    <nav className='flex justify-between items-center fixed top-0 left-0 w-full z-[1000] py-8 bg-white border-b-1 border-bronze-umbra'>
-      <div className='relative'>
-        <div className='absolute inset-y-0 right-0 w-[1px] bg-bronze-umbra -my-8'></div>
-        <h1 className='text-black text-[17px] font-bold px-8'>Logo</h1>
+    <nav className={`fixed top-0 left-0 w-full z-[1000] transition-colors duration-300 ${isScrolled ? 'bg-white text-black-umbra' : 'bg-transparent text-white'
+      }`}>
+      <div className="max-w-[2560px] mx-auto px-12 md:px-8 lg:px-24">
+        <div className="flex items-center py-8 lg:py-6">
+          {/* Desktop links */}
+          <div className='flex items-center gap-[100px] max-md:hidden'>
+            {items.map((item, index) => (
+              <NavbarItem key={index} text={item} isScrolled={isScrolled} />
+            ))}
+          </div>
+          
+          {/* Mobile contact info */}
+          <div className="md:hidden flex flex-col items-start mr-4">
+            <a 
+              href="tel:+1234567890" 
+              className={`flex items-center gap-2 text-sm hover:opacity-80 transition-opacity ${isScrolled ? 'text-black-umbra' : 'text-white'}`}
+            >
+              <FiPhone className="text-lg" />
+              <span>+1 (234) 567-890</span>
+            </a>
+            <div className={`flex items-center gap-2 text-sm mt-1 ${isScrolled ? 'text-black-umbra' : 'text-white'}`}>
+              <FiMapPin className="text-lg" />
+              <span>123 Restaurant St, City</span>
+            </div>
+          </div>
+
+          {/* Mobile menu button */}
+          <div className="flex-1 flex justify-end md:hidden">
+            <button
+              className={`w-12 h-12 flex items-center justify-center z-[1100] focus:outline-none rounded-full cursor-pointer transition-colors duration-300 ${isScrolled ? 'bg-black-umbra text-white hover:bg-bronze-umbra' : 'bg-bronze-umbra text-white hover:bg-black-umbra'}`}
+              onClick={() => setMenuOpen(true)}
+              aria-label='Open menu'
+            >
+              <FiMenu className="text-2xl" />
+            </button>
+          </div>
+
+          {/* Instagram and Facebook buttons for md and up */}
+          <div className="hidden md:flex flex-1 justify-end gap-4">
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`w-12 h-12 flex items-center justify-center z-[1100] focus:outline-none rounded-full cursor-pointer transition-colors duration-300 ${isScrolled ? 'bg-black-umbra text-white hover:bg-bronze-umbra' : 'bg-bronze-umbra text-white hover:bg-black-umbra'}`}
+              aria-label='Instagram'
+            >
+              <FaInstagram className="text-2xl" />
+            </a>
+            <a
+              href="https://facebook.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`w-12 h-12 flex items-center justify-center z-[1100] focus:outline-none rounded-full cursor-pointer transition-colors duration-300 ${isScrolled ? 'bg-black-umbra text-white hover:bg-bronze-umbra' : 'bg-bronze-umbra text-white hover:bg-black-umbra'}`}
+              aria-label='Facebook'
+            >
+              <FaFacebookF className="text-2xl" />
+            </a>
+          </div>
+        </div>
       </div>
-      {/* Desktop links */}
-      <div className='flex items-center gap-[50px] max-md:hidden'>
-        {items.map((item, index) => (
-          <NavbarItem key={index} text={item} />
-        ))}
-      </div>
-      {/* Desktop right menu */}
-      <div className='relative max-md:hidden'>
-        <div className='absolute inset-y-0 left-0 w-[1px] bg-bronze-umbra -my-8'></div>
-        <h1 className='text-black text-[17px] font-bold px-8'>Menu</h1>
-      </div>
-      {/* Mobile burger button */}
-      <button
-        className='md:hidden text-3xl px-4 py-2 z-[1100] focus:outline-none'
-        onClick={() => setMenuOpen(true)}
-        aria-label='Open menu'
-      >
-        <FiMenu />
-      </button>
       {/* MobileMenu overlay */}
       <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} items={items} />
     </nav>
