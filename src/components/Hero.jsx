@@ -16,7 +16,7 @@ const Hero = () => {
   const scale = useTransform(scrollYProgress, [0, 0.3], [1, 0.7]);
 
   return (
-    <header className="pt-[120px] flex flex-col lg:flex-row justify-center lg:justify-start items-center relative min-h-screen px-2 md:px-8 lg:px-20 overflow-hidden">
+    <header className="pt-[120px] flex flex-col lg:flex-row justify-center lg:justify-start items-center relative min-h-screen px-8 sm:px-20 overflow-hidden">
       {/* Animated bronze-umbra circle background */}
       <motion.div
         className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-0 rounded-full bg-bronze-umbra"
@@ -29,7 +29,7 @@ const Hero = () => {
       {/* Left: Overlay text and image (column on mobile) */}
       <div className="relative flex flex-col items-center w-full lg:w-auto lg:flex-[0_0_60%]">
         <motion.div
-          className="relative z-20 text-center w-full flex flex-col items-center mt-0 mb-4 lg:absolute lg:top-[40px] lg:left-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2"
+          className="relative z-20 text-center w-full flex flex-col items-center top-[0px] lg:absolute lg:top-[40px] lg:left-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2"
           initial={{ y: 60, scale: 1.15, opacity: 0 }}
           animate={{ y: 0, scale: 1, opacity: 1 }}
           transition={{ duration: 1.2, ease: [0.33, 1, 0.68, 1] }}
@@ -52,61 +52,55 @@ const Hero = () => {
           </motion.h1>
         </motion.div>
         <div className="w-full flex justify-center">
-          <AnimatedCard 
-            img="hero.png" 
-            width={320} 
-            height={420} 
-            className="sm:w-[400px] sm:h-[500px] md:w-[500px] md:h-[650px] lg:w-[700px] lg:h-[950px]"
+          <AnimatedCard
+            img="hero.png"
+            classes="w-full h-[550px] sm:h-[750px] md:w-[500px] md:h-[650px] lg:w-[700px] lg:h-[950px]"
           />
         </div>
       </div>
 
-      {/* Right: Description with animated circle and animated text overlay */}
-      <div className="flex-1 flex flex-col justify-center items-center lg:items-start max-w-xl z-30 mt-12 lg:mt-32 w-full">
-        <motion.div
-          className="relative w-[90vw] max-w-[400px] h-[90vw] max-h-[400px] rounded-full bg-bronze-umbra/80 overflow-visible flex items-center justify-center mx-auto"
-          initial={{ scale: 0.7, opacity: 0 }}
-          animate={{ scale: 1, opacity: 0.85 }}
-          transition={{ duration: 1.2, delay: 0.5, ease: [0.33, 1, 0.68, 1] }}
-        >
-          <motion.div
-            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[90vw] max-w-[520px] text-white text-lg xs:text-xl md:text-2xl font-light leading-relaxed pointer-events-none"
-            initial={{ y: 40, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 1.2, delay: 1, ease: [0.33, 1, 0.68, 1] }}
-          >
-            <span className="font-bold text-black block">Step into Umbra</span>
-            — where the charm of urban Europe meets modern elegance.<br /><br />
-            Discover a refined dining experience inspired by the heart of European cities — bold flavors, minimalist design, and warm ambiance woven into every detail. Whether it's a quiet evening or a night to impress, Umbra invites you to dine differently.
-          </motion.div>
-        </motion.div>
-      </div>
+
+      {/* Text overlay */}
+      <motion.div
+        className="md:relative z-20 text-black text-lg md:text-2xl font-light leading-relaxed md:w-[520px] mt-4 md:mt-0"
+        initial={{ y: 40, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 1.2, delay: 0.75, ease: [0.33, 1, 0.68, 1] }}
+      >
+        <span className="font-semibold text-black text-3xl mb-2 block tracking-wide">Step into Umbra</span>
+        <p>
+          Where the charm of urban Europe meets timeless elegance.
+          <br /><br />
+          Immerse yourself in an atmosphere of curated design, bold flavor, and intimate ambiance.
+          From delicate plating to wine-paired moments, Umbra is more than dining — it's a refined ritual.
+        </p>
+      </motion.div>
 
       {/* Decoration fragments - left side with scroll effect */}
-      <DecorationFragment left={700} top={40} height={120} width={19} motionStyle={{ x: xLeft, opacity: fade, scale }} />
-      <DecorationFragment left={30} top={0} height={180} width={19} motionStyle={{ x: xLeft, opacity: fade, scale }}/>
-      <DecorationFragment left={70} top={60} height={220} width={19} motionStyle={{ x: xLeft, opacity: fade, scale }}/>
-      <DecorationFragment left={110} top={100} height={140} width={19} motionStyle={{ x: xLeft, opacity: fade, scale }} />
-      <DecorationFragment left={150} top={180} height={90} width={19} motionStyle={{ x: xLeft, opacity: fade, scale }}/>
+      <DecorationFragment className="top-[100px] md:top-[40px] left-[10px] md:left-[700px] w-[10px] md:w-[19px] h-[120px]" motionStyle={{ x: xLeft, opacity: fade, scale }} />
+      <DecorationFragment className="top-0 left-[30px] md:left-[30px]  w-[10px] md:w-[19px] h-[180px]" motionStyle={{ x: xLeft, opacity: fade, scale }} />
+      <DecorationFragment className="top-[60px] right-[5px] md:left-[70px] w-[10px] md:w-[19px] h-[220px] " motionStyle={{ x: xLeft, opacity: fade, scale }} />
+      <DecorationFragment className="top-[120px] left-[110px]  w-[10px] md:w-[19px] h-[140px] hidden md:block" motionStyle={{ x: xLeft, opacity: fade, scale }} />
+      <DecorationFragment className="top-[180px] left-[150px]  w-[10px] md:w-[19px] h-[90px] hidden md:block" motionStyle={{ x: xLeft, opacity: fade, scale }} />
 
       {/* Decoration fragments - right side with scroll effect */}
-      <DecorationFragment right={40} top={120} height={220} width={19} motionStyle={{ x: xRight, opacity: fade, scale }} />
-      <DecorationFragment right={80} top={40} height={140} width={19}   motionStyle={{ x: xRight, opacity: fade, scale }}/>
-      <DecorationFragment right={120} top={200} height={90} width={19}  motionStyle={{ x: xRight, opacity: fade, scale }} />
-      <DecorationFragment right={200} top={120} height={220} width={19} motionStyle={{ x: xRight, opacity: fade, scale }} />
-      <DecorationFragment right={240} top={40} height={140} width={19}   motionStyle={{ x: xRight, opacity: fade, scale }}/>
-      <DecorationFragment right={280} top={200} height={90} width={19}  motionStyle={{ x: xRight, opacity: fade, scale }} />
+      <DecorationFragment className="top-[120px] right-[40px] w-4 h-[220px]  w-[10px] md:w-[19px] hidden md:block" motionStyle={{ x: xRight, opacity: fade, scale }} />
+      <DecorationFragment className="top-[40px] right-[80px] w-4 h-[140px]  w-[10px] md:w-[19px] hidden md:block" motionStyle={{ x: xRight, opacity: fade, scale }} />
+      <DecorationFragment className="top-[200px] right-[120px] w-4 h-[90px]  w-[10px] md:w-[19px] hidden md:block " motionStyle={{ x: xRight, opacity: fade, scale }} />
+      <DecorationFragment className="top-[120px] right-[200px] w-4 h-[220px]  w-[10px] md:w-[19px] hidden md:block" motionStyle={{ x: xRight, opacity: fade, scale }} />
+      <DecorationFragment className="top-[40px] right-[240px] w-4 h-[140px]  w-[10px] md:w-[19px] hidden md:block" motionStyle={{ x: xRight, opacity: fade, scale }} />
+      <DecorationFragment className="top-[200px] right-[280px] w-4 h-[90px]  w-[10px] md:w-[19px] hidden md:block " motionStyle={{ x: xRight, opacity: fade, scale }} />
 
       {/* Decoration fragments - bottom with staggered animation and scroll effect */}
-      <DecorationFragment left={170} bottom={18} height={120} width={19} delay={0.05} motionStyle={{ x: xLeft, opacity: fade, scale }} />
-      <DecorationFragment left={200} bottom={20} height={180} width={19} delay={0.10} motionStyle={{ x: xLeft, opacity: fade, scale }} />
-      <DecorationFragment left={250} bottom={17} height={70} width={19} delay={0.15} motionStyle={{ x: xLeft, opacity: fade, scale }} />
-      <DecorationFragment right={120} bottom={0} height={110} width={19} delay={0.20} motionStyle={{ x: xRight, opacity: fade, scale }} />
+      <DecorationFragment className="bottom-[18px] left-[170px] w-4 h-[120px] hidden md:block" delay={0.05} motionStyle={{ x: xLeft, opacity: fade, scale }} />
+      <DecorationFragment className="bottom-[20px] left-[200px] w-4 h-[180px] hidden md:block" delay={0.10} motionStyle={{ x: xLeft, opacity: fade, scale }} />
+      <DecorationFragment className="bottom-[17px] left-[250px] w-4 h-[70px] hidden md:block" delay={0.15} motionStyle={{ x: xRight, opacity: fade, scale }} />
+      <DecorationFragment className="bottom-[0px] right-[120px] w-4 h-[110px] hidden md:block" delay={0.20} motionStyle={{ x: xRight, opacity: fade, scale }} />
 
       <div className="absolute right-[50px] bottom-[20px] flex justify-between items-end px-2 z-10 pointer-events-none">
-        <DecorationFragment right={70} height={240} width={19} delay={0.25} motionStyle={{ x: xLeft, opacity: fade, scale }} />
-        <DecorationFragment right={120} bottom={40} height={150} width={19} delay={0.20} motionStyle={{ x: xRight, opacity: fade, scale }} />
-        <DecorationFragment right={20} bottom={0} height={110} width={19} delay={0.20} motionStyle={{ x: xRight, opacity: fade, scale }} />
+        <DecorationFragment className="right-[70px] bottom-[0px] h-[240px] w-4 hidden md:block" delay={0.25} motionStyle={{ x: xLeft, opacity: fade, scale }} />
+        <DecorationFragment className="right-[120px] bottom-[40px] h-[150px] w-4 hidden md:block" delay={0.20} motionStyle={{ x: xRight, opacity: fade, scale }} />
+        <DecorationFragment className="right-[20px] bottom-[0px] h-[110px] w-4 hidden md:block" delay={0.20} motionStyle={{ x: xRight, opacity: fade, scale }} />
       </div>
     </header>
   )

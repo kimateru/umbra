@@ -1,11 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const AnimatedCard = ({img, width, height}) => {
+const AnimatedCard = ({img, classes}) => {
   return (
     <div 
-      className="relative mx-auto mt-10 rounded-t-full overflow-hidden"
-      style={{ width: `${width}px`, height: `${height}px` }}
+      className={`relative mx-auto mt-4 sm:mt-10 rounded-t-full overflow-hidden ${classes}`}
     >
       {/* Border Animation Layer */}
       <motion.div

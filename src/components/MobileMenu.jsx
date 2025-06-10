@@ -39,14 +39,14 @@ const MobileMenu = ({ open, onClose, items }) => (
       >
         {/* Decorative fragments */}
         <div className="absolute inset-0 pointer-events-none z-0">
-          <DecorationFragment left={20} top={60} height={100} width={14} />
-          <DecorationFragment left={60} top={180} height={160} width={14} />
-          <DecorationFragment left={30} bottom={40} height={90} width={14} />
-          <DecorationFragment right={30} top={100} height={120} width={14} />
-          <DecorationFragment right={60} bottom={80} height={140} width={14} />
-          <DecorationFragment right={20} bottom={30} height={70} width={14} />
-          <DecorationFragment left={120} bottom={0} height={60} width={14} />
-          <DecorationFragment right={120} bottom={0} height={80} width={14} />
+          <DecorationFragment className="top-12 left-4 w-3 h-24" />
+          <DecorationFragment className="top-32 left-12 w-3 h-32" />
+          <DecorationFragment className="bottom-10 left-8 w-3 h-20" />
+          <DecorationFragment className="top-20 right-8 w-3 h-28" />
+          <DecorationFragment className="bottom-20 right-12 w-3 h-36" />
+          <DecorationFragment className="bottom-8 right-4 w-3 h-16" />
+          <DecorationFragment className="bottom-0 left-1/3 w-3 h-12" />
+          <DecorationFragment className="bottom-0 right-1/3 w-3 h-16" />
         </div>
         <button
           className='fixed top-9 right-4 text-4xl text-bronze-umbra focus:outline-none'
