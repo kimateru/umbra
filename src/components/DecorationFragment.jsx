@@ -1,10 +1,10 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 
-const DecorationFragment = ({width = 10, height = 80, top, left, right, bottom, rotate = 0, style = {}, delay = 0, motionStyle = {}}) => {
+const DecorationFragment = ({width = 10, height = 80, top, left, right, bottom, rotate = 0, style = {}, delay = 0, motionStyle = {}, className = ''}) => {
   return (
     <motion.div 
-      className='absolute bg-bronze-umbra'
+      className={`absolute bg-bronze-umbra ${className}`}
       style={{
         width: `${width}px`,
         height: `${height}px`,
