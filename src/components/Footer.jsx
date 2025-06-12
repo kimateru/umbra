@@ -12,7 +12,7 @@ const Footer = () => {
         <div className="w-full md:w-auto md:text-right text-sm xs:text-base md:text-lg mt-8 md:mt-0">
           <div className="mb-4">
             <a href="https://maps.google.com/?q=Sfatul+Tarii+17,+Chisinau" target="_blank" rel="noopener noreferrer" className="hover:underline">
-              Sfatul Tarii 17,<br />Chisinau
+            Sfatul Țării 17,<br />Chisinau
             </a>
           </div>
           <div className="mb-4">

@@ -11,9 +11,15 @@ const App = () => {
     <div className='font-avenir relative bg-white'>
       <Navbar />  {/* check 70% */}
       <Hero /> {/* check 60% */}
-      <MenuProposal />
-      <About />
-      <Contacts />
+      <div id="menu">
+        <MenuProposal />
+      </div>
+      <div id="about">
+        <About />
+      </div>
+      <div id="contact">
+        <Contacts />
+      </div>
       <Footer /> {/* check 90% */}
     </div >
   )

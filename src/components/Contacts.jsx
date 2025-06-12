@@ -60,7 +60,7 @@ const Contacts = () => {
                 rel="noopener noreferrer"
                 className="font-bold text-white/80 text-lg md:text-2xl leading-tight hover:underline block"
               >
-                Sfatul Tarii 17, Chisinau
+                Sfatul Țării 17, Chisinau
               </a>
             </motion.div>
 

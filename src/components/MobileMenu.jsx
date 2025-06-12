@@ -40,6 +40,21 @@ const MobileMenu = ({ open, onClose, items }) => {
     }
   }, [open])
 
+  const scrollToSection = (sectionName) => {
+    const element = document.getElementById(sectionName.toLowerCase())
+    if (element) {
+      const offset = window.innerWidth >= 768 ? 20 : 0; // 20px offset for desktop
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+      onClose()
+    }
+  }
+
   return (
     <>
       {/* Scrollbar compensator */}
@@ -82,12 +97,12 @@ const MobileMenu = ({ open, onClose, items }) => {
               </div>
             </div>
 
-            <div className='flex flex-col gap-12 text-3xl font-bold text-bronze-umbra z-10'>
+            <div className='flex flex-col gap-12 text-3xl font-medium text-bronze-umbra z-10'>
               {items.map((item, index) => (
                 <button
                   key={index}
                   className='hover:text-black transition-colors duration-200'
-                  onClick={onClose}
+                  onClick={() => scrollToSection(item)}
                 >
                   {item}
                 </button>

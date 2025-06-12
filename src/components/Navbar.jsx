@@ -24,6 +24,20 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId)
+    if (element) {
+      const offset = window.innerWidth >= 768 ? 20 : 0; // 20px offset for desktop
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  }
+
   return (
     <nav className={`fixed top-0 left-0 w-full z-[1000] transition-colors duration-300 ${isScrolled ? 'bg-white text-black-umbra' : 'bg-transparent text-white'
       }`}>
@@ -45,10 +59,13 @@ const Navbar = () => {
               <FiPhone className="text-lg" />
               <span>078999107</span>
             </a>
-            <div className={`flex items-center gap-2 text-sm mt-1 ${isScrolled ? 'text-black-umbra' : 'text-white'}`}>
+            <button 
+              onClick={() => scrollToSection('contact')}
+              className={`flex items-center gap-2 text-sm mt-1 hover:opacity-80 transition-opacity ${isScrolled ? 'text-black-umbra' : 'text-white'}`}
+            >
               <FiMapPin className="text-lg" />
-              <span>Sfatul Tarii 17, Chisinau</span>
-            </div>
+              <span>Sfatul Țării 17, Chisinau</span>
+            </button>
           </div>
 
           {/* Mobile menu button */}

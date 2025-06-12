@@ -26,11 +26,27 @@ const Navbar = ({ text, isScrolled }) => {
     });
   };
 
+  const scrollToSection = (e) => {
+    e.preventDefault();
+    const element = document.getElementById(text.toLowerCase());
+    if (element) {
+      const offset = window.innerWidth >= 768 ? 20 : 0; // 20px offset for desktop
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <div
       style={{ position: 'relative', display: 'inline-block', padding: '0 15px', cursor: 'pointer' }}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      onClick={scrollToSection}
     >
       <span style={{ 
         fontSize: '17px', 
