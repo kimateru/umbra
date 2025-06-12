@@ -9,7 +9,7 @@ import DecorationFragment from './DecorationFragment'
 */
 const About = () => {
   return (
-    <div className="relative flex flex-col min-h-[90vh] bg-[#a56823] px-4 md:px-16 py-20 overflow-hidden">
+    <div className="relative flex flex-col min-h-[90vh] bg-bronze-umbra px-4 md:px-16 py-20 overflow-hidden">
       {/* Heading */}
       <h2 className="text-white text-3xl md:text-5xl font-bold text-center mb-10 tracking-wide uppercase z-10">
         About Umbra
