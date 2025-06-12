@@ -10,7 +10,6 @@ const AnimatedCard = ({img, color, classes}) => {
       ref={ref}
       className={`relative mx-auto mt-4 sm:mt-10 rounded-t-full overflow-hidden ${classes}`}
     >
-      {/* Border Animation Layer */}
       <motion.div
         className="absolute inset-0 rounded-t-full pointer-events-none z-10"
         initial={{

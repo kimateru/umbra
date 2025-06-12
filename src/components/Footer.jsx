@@ -1,22 +1,16 @@
 import React from 'react'
-
+import Logo_Umbra_White from '/Logo_Umbra_White.svg'
 const Footer = () => {
   return (
     <footer className="bg-bronze-umbra text-white px-8 py-12 sm:px-12 sm:py-16 md:py-24 w-full">
       <div className="max-w-[2560px] mx-auto flex flex-col md:flex-row justify-between items-center md:items-end gap-12 text-center md:text-left">
         {/* Brand and Logo */}
         <div className="w-full md:w-auto">
-          <span className="block text-sm text-gray-400 mb-4">04</span>
-          <h2 className="text-[40px] xs:text-[48px] md:text-[96px] font-extrabold leading-none tracking-tight uppercase font-serif" style={{fontFamily: 'serif'}}>
-            Umbra
-          </h2>
-          <h3 className="text-[24px] xs:text-[32px] md:text-[48px] font-extrabold leading-none tracking-tight uppercase font-serif mb-6" style={{fontFamily: 'serif'}}>
-            European Urban Dining
-          </h3>
+          <img src={Logo_Umbra_White} alt="Umbra Logo" className="w-full h-auto  xl:h-[220px] 2xl:h-[250px]" />
         </div>
         {/* Contact Info */}
         <div className="w-full md:w-auto md:text-right text-sm xs:text-base md:text-lg mt-8 md:mt-0">
-          <div className="mb-4">1234 Lorem Ipsum Ave.<br/>Metropolis, Ipsumland, 12345</div>
+          <div className="mb-4">1234 Lorem Ipsum Ave.<br />Metropolis, Ipsumland, 12345</div>
           <div className="mb-4">hello@umbra.com</div>
           <div>(123) 456-7890</div>
         </div>

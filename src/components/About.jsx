@@ -26,7 +26,7 @@ const About = () => {
         {/* Center Image & Title */}
         <div className="flex-shrink-0 flex flex-col items-center justify-center gap-4 relative mt-20 xl:mt-40">
           {/* Styled Title - overlays image on all screens */}
-          <div className="z-20 absolute -top-16 xl:-top-32 left-1/2 -translate-x-1/2 w-full pointer-events-none">
+          <div className="z-20 absolute -top-11 xl:-top-32 left-1/2 -translate-x-1/2 w-full pointer-events-none">
             <div className="font-serif text-[2.5rem] md:text-[4rem] lg:text-[6rem] xl:text-[7.5rem] 2xl:text-[9rem] leading-none text-white font-bold drop-shadow-lg text-center">
               <span className="block">A <span className="italic">place</span></span>
               <span className="block relative">
