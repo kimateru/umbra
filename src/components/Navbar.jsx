@@ -39,15 +39,15 @@ const Navbar = () => {
           {/* Mobile contact info */}
           <div className="md:hidden flex flex-col items-start mr-4">
             <a 
-              href="tel:+1234567890" 
+              href="tel:078999107" 
               className={`flex items-center gap-2 text-sm hover:opacity-80 transition-opacity ${isScrolled ? 'text-black-umbra' : 'text-white'}`}
             >
               <FiPhone className="text-lg" />
-              <span>+1 (234) 567-890</span>
+              <span>078999107</span>
             </a>
             <div className={`flex items-center gap-2 text-sm mt-1 ${isScrolled ? 'text-black-umbra' : 'text-white'}`}>
               <FiMapPin className="text-lg" />
-              <span>123 Restaurant St, City</span>
+              <span>Sfatul Tarii 17, Chisinau</span>
             </div>
           </div>
 

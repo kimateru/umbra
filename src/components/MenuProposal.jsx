@@ -5,7 +5,7 @@ export default function MenuProposal() {
   return (
     <div className="bg-black-umbra min-h-screen">
       {/* Hero Section */}
-      <div className="relative min-h-[80vh] flex flex-col items-center justify-center text-center px-4 py-32 sm:py-40">
+      <div className="relative min-h-[90vh] flex flex-col items-center justify-center text-center px-4 py-32 sm:py-40">
         {/* Background image with overlay */}
         <img
           src="/3.jpg"

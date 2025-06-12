@@ -10,9 +10,17 @@ const Footer = () => {
         </div>
         {/* Contact Info */}
         <div className="w-full md:w-auto md:text-right text-sm xs:text-base md:text-lg mt-8 md:mt-0">
-          <div className="mb-4">1234 Lorem Ipsum Ave.<br />Metropolis, Ipsumland, 12345</div>
-          <div className="mb-4">hello@umbra.com</div>
-          <div>(123) 456-7890</div>
+          <div className="mb-4">
+            <a href="https://maps.google.com/?q=Sfatul+Tarii+17,+Chisinau" target="_blank" rel="noopener noreferrer" className="hover:underline">
+              Sfatul Tarii 17,<br />Chisinau
+            </a>
+          </div>
+          <div className="mb-4">
+            <a href="mailto:umbra.chisinau@gmail.com" className="hover:underline">umbra.chisinau@gmail.com</a>
+          </div>
+          <div>
+            <a href="tel:078999107" className="hover:underline">078999107</a>
+          </div>
         </div>
       </div>
       <div className="max-w-[2560px] mx-auto flex flex-col md:flex-row justify-between items-center mt-12 md:mt-16 border-t border-white/20 pt-6 md:pt-8 text-sm xs:text-base md:text-lg gap-6 text-center md:text-left">
