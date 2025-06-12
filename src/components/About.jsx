@@ -9,7 +9,7 @@ import DecorationFragment from './DecorationFragment'
 */
 const About = () => {
   return (
-    <div className="relative flex flex-col min-h-[90vh] bg-[#8b6642] px-4 md:px-16 py-20 overflow-hidden">
+    <div className="relative flex flex-col min-h-[90vh] bg-[#a56823] px-4 md:px-16 py-20 overflow-hidden">
       {/* Heading */}
       <h2 className="text-white text-3xl md:text-5xl font-bold text-center mb-10 tracking-wide uppercase z-10">
         About Umbra
@@ -37,9 +37,9 @@ const About = () => {
             </div>
           </div>
           <AnimatedCard
-            img={"/hero.png"}
+            img={"/8.jpg"}
             color="#fff4e6"
-            classes="w-[320px] h-[380px] sm:w-[400px] sm:h-[480px] md:w-[550px] md:h-[650px] lg:w-[700px] lg:h-[900px] xl:w-[900px] xl:h-[1100px] shadow-2xl"
+            classes="w-[320px] h-[380px] sm:w-[400px] sm:h-[480px] md:w-[550px] md:h-[650px] lg:w-[700px] lg:h-[900px] xl:w-[700px] xl:h-[800px] 2xl:w-[900px] 2xl:h-[1100px] shadow-2xl"
           />
         </div>
         {/* Right Text */}

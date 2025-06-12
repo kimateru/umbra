@@ -1,6 +1,7 @@
 import React from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import DecorationFragment from './DecorationFragment'
+import Logo_Umbra_White from '/Logo_Umbra_White.svg'
 /*
 Название ресторана, краткий слоган
 Фоновое изображение/видео
@@ -18,13 +19,13 @@ const Hero = () => {
     <header className="relative min-h-screen overflow-hidden bg-black-umbra">
       {/* Full screen image container */}
       <div className="absolute inset-0">
-        <motion.img 
-          src="hero.png" 
-          alt="Umbra Restaurant - Fine Dining Experience" 
+        <motion.img
+          src="11.jpg"
+          alt="Umbra Restaurant - Fine Dining Experience"
           className='w-full h-full object-cover'
           initial={{ scale: 1.2, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          transition={{ 
+          transition={{
             duration: 1.5,
             ease: [0.33, 1, 0.68, 1]
           }}
@@ -40,32 +41,24 @@ const Hero = () => {
             animate={{ y: 0, scale: 1, opacity: 1 }}
             transition={{ duration: 1.2, ease: [0.33, 1, 0.68, 1] }}
           >
-            <motion.p
-              className="text-white/80 text-sm md:text-lg my-6 max-w-xl"
+            <div className="flex flex-col md:flex-row md:items-end gap-4">
+              <motion.div
+                className="relative"
+                initial={{ y: 60, scale: 1.18, opacity: 0, letterSpacing: '0.2em' }}
+                animate={{ y: 0, scale: 1, opacity: 1, letterSpacing: '0.02em' }}
+                transition={{ duration: 1.2, delay: 0.5, ease: [0.33, 1, 0.68, 1] }}
+              >
+                <img src={Logo_Umbra_White} alt="Umbra Logo" className="w-full h-auto  xl:h-[220px] 2xl:h-[250px]" />
+              </motion.div>
+            </div>
+            {/* <motion.p
+              className="text-white/80 text-sm lg:text-base 2xl:text-lg my-6 max-w-xl"
               initial={{ y: 40, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 1, delay: 0.8, ease: [0.33, 1, 0.68, 1] }}
             >
               Experience the perfect blend of European elegance and urban sophistication. Our culinary journey brings together traditional flavors with contemporary innovation, creating an unforgettable dining experience in the heart of the city.
-            </motion.p>
-            <div className="flex flex-col md:flex-row md:items-end gap-4">
-              <motion.h1
-                className="text-[56px] xs:text-[72px] md:text-[90px] lg:text-[110px] xl:text-[140px] 2xl:text-[190px] font-bold text-bronze-umbra drop-shadow-lg uppercase tracking-wide leading-none"
-                initial={{ y: 60, scale: 1.18, opacity: 0, letterSpacing: '0.2em' }}
-                animate={{ y: 0, scale: 1, opacity: 1, letterSpacing: '0.02em' }}
-                transition={{ duration: 1.2, delay: 0.5, ease: [0.33, 1, 0.68, 1] }}
-              >
-                Umbra
-              </motion.h1>
-              <motion.h2
-                className="text-[24px] xs:text-[32px] md:text-[40px] lg:text-[48px] xl:text-[60px] 2xl:text-[80px] font-bold text-bronze-umbra uppercase tracking-wide leading-none mb-4 w-full"
-                initial={{ y: 40, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 1, delay: 0.7, ease: [0.33, 1, 0.68, 1] }}
-              >
-                European Urban Dining
-              </motion.h2>
-            </div>
+            </motion.p> */}
           </motion.div>
         </div>
 
@@ -82,10 +75,10 @@ const Hero = () => {
         <DecorationFragment className="top-[80px] right-[240px] w-[10px] md:w-[19px] h-[140px] hidden md:block" motionStyle={{ x: xRight, opacity: fade, scale }} />
         <DecorationFragment className="top-[200px] right-[280px] w-[10px] md:w-[19px] h-[90px] hidden md:block" motionStyle={{ x: xRight, opacity: fade, scale }} /> */}
 
-       
+
         {/* Bottom right decoration group */}
         {/* <div className="absolute right-[50px] bottom-[20px] flex justify-between items-end px-2 z-10 pointer-events-none"> */}
-          {/* <DecorationFragment className="right-[70px] bottom-[0px] h-[240px] w-4 hidden md:block" delay={0.25} motionStyle={{ x: xLeft, opacity: fade, scale }} />
+        {/* <DecorationFragment className="right-[70px] bottom-[0px] h-[240px] w-4 hidden md:block" delay={0.25} motionStyle={{ x: xLeft, opacity: fade, scale }} />
           <DecorationFragment className="right-[120px] bottom-[40px] h-[150px] w-4 hidden md:block" delay={0.20} motionStyle={{ x: xRight, opacity: fade, scale }} />
           <DecorationFragment className="right-[20px] bottom-[0px] h-[110px] w-4 hidden md:block" delay={0.20} motionStyle={{ x: xRight, opacity: fade, scale }} />
         </div> */}
