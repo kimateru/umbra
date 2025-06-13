@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
-const images = Array.from({ length: 15 }, (_, i) => ({
+const images = Array.from({ length: 11 }, (_, i) => ({
   id: i + 1,
   src: `/${i + 1}.jpg`,
 }));

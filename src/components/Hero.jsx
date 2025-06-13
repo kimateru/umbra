@@ -1,5 +1,5 @@
-import React from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import React, { useState, useEffect } from 'react'
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import DecorationFragment from './DecorationFragment'
 import Logo_Umbra_White from '/Logo_Umbra_White.svg'
 /*
@@ -15,21 +15,71 @@ const Hero = () => {
   const fade = useTransform(scrollYProgress, [0, 0.3, 0.5], [1, 0.7, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.3], [1, 0.7]);
 
+  const images = [
+    "hero1.jpg",
+    "hero2.jpg",
+    "hero3.jpg"
+  ];
+
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [direction, setDirection] = useState(1);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setDirection(1);
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const slideVariants = {
+    enter: (direction) => ({
+      x: direction > 0 ? '100%' : '-100%',
+      opacity: 1,
+      position: 'absolute',
+      width: '100%',
+      height: '100%'
+    }),
+    center: {
+      zIndex: 1,
+      x: 0,
+      opacity: 1,
+      position: 'absolute',
+      width: '100%',
+      height: '100%'
+    },
+    exit: (direction) => ({
+      zIndex: 0,
+      x: direction < 0 ? '100%' : '-100%',
+      opacity: 1,
+      position: 'absolute',
+      width: '100%',
+      height: '100%'
+    })
+  };
+
   return (
     <header className="relative min-h-screen overflow-hidden bg-black-umbra">
       {/* Full screen image container */}
-      <div className="absolute inset-0">
-        <motion.img
-          src="11.jpg"
-          alt="Umbra Restaurant - Fine Dining Experience"
-          className='w-full h-full object-cover'
-          initial={{ scale: 1.2, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{
-            duration: 1.5,
-            ease: [0.33, 1, 0.68, 1]
-          }}
-        />
+      <div className="absolute inset-0 overflow-hidden">
+        <AnimatePresence initial={false} custom={direction} mode="sync">
+          <motion.img
+            key={currentImageIndex}
+            src={images[currentImageIndex]}
+            alt="Umbra Restaurant - Fine Dining Experience"
+            className='w-full h-full object-cover'
+            custom={direction}
+            variants={slideVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{
+              x: { type: "tween", duration: 0.8, ease: "easeInOut" },
+              opacity: { duration: 0.2 }
+            }}
+          />
+        </AnimatePresence>
       </div>
 
       {/* Content container */}

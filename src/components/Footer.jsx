@@ -2,7 +2,7 @@ import React from 'react'
 import Logo_Umbra_White from '/Logo_Umbra_White.svg'
 const Footer = () => {
   return (
-    <footer className="bg-bronze-umbra text-white px-8 py-12 sm:px-12 sm:py-16 md:py-24 w-full">
+    <footer className="bg-[#59412b] text-white px-8 py-12 sm:px-12 sm:py-16 md:py-24 w-full">
       <div className="max-w-[2560px] mx-auto flex flex-col md:flex-row justify-between items-center md:items-end gap-12 text-center md:text-left">
         {/* Brand and Logo */}
         <div className="w-full md:w-auto">

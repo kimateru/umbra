@@ -20,7 +20,7 @@ const Contacts = () => {
 
   return (
     <>
-      <div className="min-h-screen bg-black-umbra flex flex-col items-center justify-center p-6 py-12">
+      <div className="min-h-screen bg-[#2c2f30] flex flex-col items-center justify-center p-6 py-12">
         <div ref={ref} className="max-w-6xl w-full flex flex-col md:flex-row items-center md:items-start justify-between gap-10 mt-12">
           {/* Left Info Panel */}
           <motion.div
@@ -34,7 +34,7 @@ const Contacts = () => {
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-3xl md:text-5xl font-extrabold text-bronze-umbra mb-2">
+              <h2 className="text-3xl md:text-5xl font-extrabold text-[#bf9d7a] mb-2">
                 Umbra Restaurant
               </h2>
               <div className="text-xl md:text-2xl font-medium text-white mb-1">
@@ -53,7 +53,7 @@ const Contacts = () => {
               animate={isInView ? "animate" : "initial"}
               transition={{ delay: 0.2 }}
             >
-              <FaMapMarkerAlt className="text-bronze-umbra text-xl" />
+              <FaMapMarkerAlt className="text-[#bf9d7a] text-xl" />
               <a
                 href="https://maps.google.com/?q=Sfatul+Tarii+17,+Chisinau"
                 target="_blank"
@@ -71,7 +71,7 @@ const Contacts = () => {
               animate={isInView ? "animate" : "initial"}
               transition={{ delay: 0.4 }}
             >
-              <FaEnvelope className="text-bronze-umbra text-xl" />
+              <FaEnvelope className="text-[#bf9d7a] text-xl" />
               <a href="mailto:umbra.chisinau@gmail.com" className="hover:underline">
                 umbra.chisinau@gmail.com
               </a>
@@ -84,7 +84,7 @@ const Contacts = () => {
               animate={isInView ? "animate" : "initial"}
               transition={{ delay: 0.6 }}
             >
-              <FaPhone className="text-bronze-umbra text-xl" />
+              <FaPhone className="text-[#bf9d7a] text-xl" />
               <a href="tel:078999107" className="hover:underline">
                 078999107
               </a>

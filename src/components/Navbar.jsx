@@ -39,7 +39,7 @@ const Navbar = () => {
   }
 
   return (
-    <nav className={`fixed top-0 left-0 w-full z-[1000] transition-colors duration-300 ${isScrolled ? 'bg-white text-black-umbra' : 'bg-transparent text-white'
+    <nav className={`fixed top-0 left-0 w-full z-[1000] transition-colors duration-300 text-white ${isScrolled ? 'bg-black' : 'bg-transparent text-white'
       }`}>
       <div className="max-w-[2560px] mx-auto px-12 md:px-8 lg:px-24">
         <div className="flex items-center py-8 lg:py-6">
@@ -54,14 +54,14 @@ const Navbar = () => {
           <div className="md:hidden flex flex-col items-start mr-4">
             <a 
               href="tel:078999107" 
-              className={`flex items-center gap-2 text-sm hover:opacity-80 transition-opacity ${isScrolled ? 'text-black-umbra' : 'text-white'}`}
+              className="flex items-center gap-2 text-sm hover:opacity-80 transition-opacity"
             >
               <FiPhone className="text-lg" />
               <span>078999107</span>
             </a>
             <button 
               onClick={() => scrollToSection('contact')}
-              className={`flex items-center gap-2 text-sm mt-1 hover:opacity-80 transition-opacity ${isScrolled ? 'text-black-umbra' : 'text-white'}`}
+              className="flex items-center gap-2 text-sm mt-1 hover:opacity-80 transition-opacity"
             >
               <FiMapPin className="text-lg" />
               <span>Sfatul Țării 17, Chisinau</span>

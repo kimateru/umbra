@@ -51,7 +51,7 @@ const Navbar = ({ text, isScrolled }) => {
       <span style={{ 
         fontSize: '17px', 
         fontWeight: '500', 
-        color: isScrolled ? '#333a3e' : 'white',
+        color: isScrolled ? '!text-gray-400' : 'white',
         position: 'relative', 
         zIndex: 2 
       }}>
