@@ -28,7 +28,7 @@ const Hero = () => {
     const interval = setInterval(() => {
       setDirection(1);
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 5000);
+    }, 2500);
 
     return () => clearInterval(interval);
   }, []);
