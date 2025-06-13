@@ -8,10 +8,10 @@ const AnimatedCard = ({img, color, classes}) => {
   return (
     <div 
       ref={ref}
-      className={`relative mx-auto mt-4 sm:mt-10 rounded-t-full overflow-hidden ${classes}`}
+      className={`relative mx-auto mt-4 sm:mt-10 rounded-b-full overflow-hidden ${classes}`}
     >
       <motion.div
-        className="absolute inset-0 rounded-t-full pointer-events-none z-10"
+        className="absolute inset-0 rounded-b-full pointer-events-none z-10"
         initial={{
           borderWidth: '135px',
           borderColor: color,
@@ -44,7 +44,7 @@ const AnimatedCard = ({img, color, classes}) => {
       <motion.img
         src={img}
         alt="Animated"
-        className="absolute inset-0 w-full h-full object-cover rounded-t-full z-0"
+        className="absolute inset-0 w-full h-full object-cover rounded-b-full z-0"
         initial={{ scale: 1.36 }}
         animate={inView ? { scale: 1 } : { scale: 1.36 }}
         transition={{
