@@ -30,7 +30,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row gap-4 md:gap-8 w-full md:w-auto items-center justify-center md:justify-end">
           <div className='flex gap-4 md:gap-8 mb-2 md:mb-0'>
             <a
-              href="https://instagram.com"
+              href="https://www.instagram.com/umbra_urban_md/?fbclid=IwY2xjawK49dtleHRuA2FlbQIxMQBicmlkETBNMDZTc2JsTXZReDdsNEpKAR5h9JoAA16KW9MzRHTOYO3YX8W4qbDaSh-nFjgCrXTLSxpv0Fw9L9YIHX76kg_aem_JkW7Ez5YLS1K3KNhkPfRVg"
               target="_blank"
               rel="noopener noreferrer"
               className="text-white hover:text-gray-300 transition-colors"
@@ -38,7 +38,7 @@ const Footer = () => {
               <FaInstagram size={24} />
             </a>
             <a
-              href="https://facebook.com"
+              href="https://web.facebook.com/profile.php?id=61576804933642#"
               target="_blank"
               rel="noopener noreferrer"
               className="text-white hover:text-gray-300 transition-colors"

@@ -82,7 +82,7 @@ const Navbar = () => {
           {/* Instagram and Facebook buttons for md and up */}
           <div className="hidden md:flex flex-1 justify-end gap-4">
             <a
-              href="https://instagram.com"
+              href="https://www.instagram.com/umbra_urban_md/?fbclid=IwY2xjawK49dtleHRuA2FlbQIxMQBicmlkETBNMDZTc2JsTXZReDdsNEpKAR5h9JoAA16KW9MzRHTOYO3YX8W4qbDaSh-nFjgCrXTLSxpv0Fw9L9YIHX76kg_aem_JkW7Ez5YLS1K3KNhkPfRVg"
               target="_blank"
               rel="noopener noreferrer"
               className={`w-12 h-12 flex items-center justify-center z-[1100] focus:outline-none rounded-full cursor-pointer transition-colors duration-300 ${isScrolled ? 'bg-black-umbra text-white hover:bg-bronze-umbra' : 'bg-bronze-umbra text-white hover:bg-black-umbra'}`}
@@ -91,7 +91,7 @@ const Navbar = () => {
               <FaInstagram className="text-2xl" />
             </a>
             <a
-              href="https://facebook.com"
+              href="https://web.facebook.com/profile.php?id=61576804933642#"
               target="_blank"
               rel="noopener noreferrer"
               className={`w-12 h-12 flex items-center justify-center z-[1100] focus:outline-none rounded-full cursor-pointer transition-colors duration-300 ${isScrolled ? 'bg-black-umbra text-white hover:bg-bronze-umbra' : 'bg-bronze-umbra text-white hover:bg-black-umbra'}`}
