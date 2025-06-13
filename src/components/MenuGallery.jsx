@@ -8,7 +8,7 @@ const images = Array.from({ length: 11 }, (_, i) => ({
 
 export default function MenuGallery() {
   return (
-    <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6 pt-20 pb-32">
+    <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6 pt-5 lg:pt-20 pb-20">
       {images.map((img, idx) => {
         const [ref, inView] = useInView({
           threshold: 0.1,

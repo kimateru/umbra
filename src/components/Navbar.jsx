@@ -42,7 +42,7 @@ const Navbar = () => {
     <nav className={`fixed top-0 left-0 w-full z-[1000] transition-colors duration-300 text-white ${isScrolled ? 'bg-black' : 'bg-transparent text-white'
       }`}>
       <div className="max-w-[2560px] mx-auto px-12 md:px-8 lg:px-24">
-        <div className="flex items-center py-8 lg:py-6">
+        <div className="flex items-center py-4 lg:py-6">
           {/* Desktop links */}
           <div className='flex items-center gap-[100px] max-md:hidden'>
             {items.map((item, index) => (

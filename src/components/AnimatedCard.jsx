@@ -58,3 +58,5 @@ const AnimatedCard = ({img, color, classes}) => {
 };
 
 export default AnimatedCard;
+
+
