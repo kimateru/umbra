@@ -66,7 +66,7 @@ const MobileMenu = ({ open, onClose, items }) => {
       <AnimatePresence>
         {open && (
           <motion.div
-            className='fixed inset-0 bg-white z-[2000] flex flex-col items-center justify-center'
+            className='fixed inset-0 bg-black z-[2000] flex flex-col items-center justify-center'
             initial='hidden'
             animate='visible'
             exit='exit'
@@ -97,7 +97,7 @@ const MobileMenu = ({ open, onClose, items }) => {
               </div>
             </div>
 
-            <div className='flex flex-col gap-12 text-3xl font-medium text-bronze-umbra z-10'>
+            <div className='flex flex-col gap-12 text-3xl font-medium text-[#bf9d7a] z-10'>
               {items.map((item, index) => (
                 <button
                   key={index}

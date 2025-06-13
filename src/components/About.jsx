@@ -16,9 +16,9 @@ const About = () => {
       </h2>
 
       {/* Main Row */}
-      <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-24 z-10">
+      <div className="flex flex-col xl:flex-row items-center justify-center gap-8 lg:gap-24 z-10">
         {/* Left Text */}
-        <div className="flex-1 flex items-center justify-center text-center lg:text-right">
+        <div className="flex-1 flex items-center justify-center text-center xl:text-right">
           <p className="max-w-xs text-white/90 text-xl md:text-3xl lg:text-4xl font-light">
             The contemporary spirit of an historic space.
           </p>
@@ -43,7 +43,7 @@ const About = () => {
           />
         </div>
         {/* Right Text */}
-        <div className="flex-1 flex items-center justify-center text-center lg:text-left">
+        <div className="flex-1 flex items-center justify-center text-center xl:text-left">
           <p className="max-w-xs text-white/90 text-xl md:text-3xl lg:text-4xl font-light">
             Where attention to detail fuels an elegant and refined conviviality.
           </p>

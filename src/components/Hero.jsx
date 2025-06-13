@@ -98,7 +98,7 @@ const Hero = () => {
                 animate={{ y: 0, scale: 1, opacity: 1, letterSpacing: '0.02em' }}
                 transition={{ duration: 1.2, delay: 0.5, ease: [0.33, 1, 0.68, 1] }}
               >
-                <img src={Logo_Umbra_White} alt="Umbra Logo" className="w-full h-auto  xl:h-[220px] 2xl:h-[250px]" />
+                <img src={Logo_Umbra_White} alt="Umbra Logo" className="w-[350px] h-[100px]  md:w-full h-auto xl:h-[220px] 2xl:h-[250px]" />
               </motion.div>
             </div>
             {/* <motion.p
