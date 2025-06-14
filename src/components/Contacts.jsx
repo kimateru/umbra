@@ -1,6 +1,7 @@
 import { motion, useInView } from 'framer-motion';
 import { FaMapMarkerAlt, FaEnvelope, FaPhone } from 'react-icons/fa';
 import { useRef } from 'react';
+import { Helmet } from 'react-helmet';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 30 },
@@ -18,8 +19,46 @@ const Contacts = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
 
+  // Structured data for contact information
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "ContactPoint",
+    "name": "Umbra Restaurant Contact Information",
+    "telephone": "+37378999107",
+    "contactType": "customer service",
+    "areaServed": "Chișinău",
+    "availableLanguage": ["English", "Romanian", "Russian"],
+    "hoursAvailable": "Mo-Su 11:00-23:00",
+    "isPartOf": {
+      "@type": "Restaurant",
+      "name": "Umbra Restaurant",
+      "url": "https://www.umbra-urban.md",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Sfatul Țării 17",
+        "addressLocality": "Chișinău",
+        "addressCountry": "MD"
+      }
+    }
+  };
+
   return (
     <>
+      <Helmet>
+        <title>Umbra Restaurant - Fine European Dining in Chisinau</title>
+        <meta 
+          name="description" 
+          content="Contact Umbra Restaurant in Chisinau. Visit us at Sfatul Țării 17, call +37378999107, or email umbra.chisinau@gmail.com. Open daily 11:00-23:00."
+        />
+        <meta name="keywords" content="Umbra Restaurant contact, restaurant reservations, Chisinau restaurant, European dining contact" />
+        <meta property="og:title" content="Contact Umbra Restaurant - Fine European Dining in Chisinau" />
+        <meta property="og:description" content="Contact Umbra Restaurant in Chisinau. Visit us at Sfatul Țării 17, call +37378999107, or email umbra.chisinau@gmail.com. Open daily 11:00-23:00." />
+        <meta property="og:type" content="website" />
+        <script type="application/ld+json">
+          {JSON.stringify(structuredData)}
+        </script>
+      </Helmet>
+
       <div className="min-h-screen bg-[#2c2f30] flex flex-col items-center justify-center p-6 py-12">
         <div ref={ref} className="max-w-6xl w-full flex flex-col md:flex-row items-center md:items-start justify-between gap-10 mt-12">
           {/* Left Info Panel */}
@@ -42,7 +81,7 @@ const Contacts = () => {
               </div>
               <div className="text-2xl md:text-3xl font-light text-white/80 mb-6">
                 Everyday<br />
-                16:00 - 23:00
+                11:00 - 23:00
               </div>
             </motion.div>
 

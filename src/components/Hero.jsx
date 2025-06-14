@@ -2,10 +2,33 @@ import React, { useState, useEffect } from 'react'
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import DecorationFragment from './DecorationFragment'
 import Logo_Umbra_White from '/Logo_Umbra_White.svg'
+import { Helmet } from 'react-helmet'
 /*
 Название ресторана, краткий слоган
 Фоновое изображение/видео
 */
+
+const images = [
+  {
+    src: "/hero1.jpg",
+    alt: "Umbra Restaurant - Fine European Dining",
+    width: 1920,
+    height: 1080,
+    priority: true
+  },
+  {
+    src: "/hero2.jpg",
+    alt: "Contemporary European Cuisine at Umbra",
+    width: 1920,
+    height: 1080
+  },
+  {
+    src: "/hero3.jpg",
+    alt: "Elegant Dining Experience at Umbra",
+    width: 1920,
+    height: 1080
+  }
+];
 
 const Hero = () => {
   const { scrollYProgress } = useScroll();
@@ -15,20 +38,51 @@ const Hero = () => {
   const fade = useTransform(scrollYProgress, [0, 0.3, 0.5], [1, 0.7, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.3], [1, 0.7]);
 
-  const images = [
-    "hero1.jpg",
-    "hero2.jpg",
-    "hero3.jpg"
-  ];
-
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [direction, setDirection] = useState(1);
+  const [imagesLoaded, setImagesLoaded] = useState(false);
 
+  // Preload images
+  useEffect(() => {
+    const preloadImages = async () => {
+      const imagePromises = images.map(img => {
+        return new Promise((resolve, reject) => {
+          const image = new Image();
+          image.src = img.src;
+          image.onload = resolve;
+          image.onerror = reject;
+        });
+      });
+
+      try {
+        await Promise.all(imagePromises);
+        setImagesLoaded(true);
+      } catch (error) {
+        console.error('Error preloading images:', error);
+        setImagesLoaded(true); // Continue even if some images fail to load
+      }
+    };
+
+    preloadImages();
+  }, []);
+
+  // Preload next image
+  useEffect(() => {
+    const preloadImage = (src) => {
+      const img = new Image();
+      img.src = src;
+    };
+
+    // Preload next image
+    const nextIndex = (currentImageIndex + 1) % images.length;
+    preloadImage(images[nextIndex].src);
+  }, [currentImageIndex]);
+
+  // Change image every 5 seconds
   useEffect(() => {
     const interval = setInterval(() => {
-      setDirection(1);
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 2500);
+      setCurrentImageIndex((prev) => (prev + 1) % images.length);
+    }, 5000);
 
     return () => clearInterval(interval);
   }, []);
@@ -59,81 +113,152 @@ const Hero = () => {
     })
   };
 
-  return (
-    <header className="relative min-h-screen overflow-hidden bg-black-umbra">
-      {/* Full screen image container */}
-      <div className="absolute inset-0 overflow-hidden">
-        <AnimatePresence initial={false} custom={direction} mode="sync">
-          <motion.img
-            key={currentImageIndex}
-            src={images[currentImageIndex]}
-            alt="Umbra Restaurant - Fine Dining Experience"
-            className='w-full h-full object-cover'
-            custom={direction}
-            variants={slideVariants}
-            initial="enter"
-            animate="center"
-            exit="exit"
-            transition={{
-              x: { type: "tween", duration: 0.8, ease: "easeInOut" },
-              opacity: { duration: 0.2 }
-            }}
-          />
-        </AnimatePresence>
-      </div>
+  // Structured data for restaurant
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Umbra Restaurant",
+    "image": [
+      "https://www.umbra-urban.md/hero1.jpg",
+      "https://www.umbra-urban.md/hero2.jpg",
+      "https://www.umbra-urban.md/hero3.jpg"
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Sfatul Țării 17",
+      "addressLocality": "Chișinău",
+      "addressCountry": "MD"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "47.025072",
+      "longitude": "28.818846"
+    },
+    "url": "https://www.umbra-urban.md",
+    "telephone": "+37378999107",
+    "servesCuisine": "European",
+    "priceRange": "$$",
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ],
+      "opens": "11:00",
+      "closes": "23:00"
+    }
+  };
 
-      {/* Content container */}
-      <div className="relative z-10 flex flex-col justify-end items-start min-h-screen px-8 lg:px-24 pb-20">
-        <div className="relative flex flex-col items-start w-full">
-          <motion.div
-            className="relative z-20 text-left w-full flex flex-col items-start "
-            initial={{ y: 60, scale: 1.15, opacity: 0 }}
-            animate={{ y: 0, scale: 1, opacity: 1 }}
-            transition={{ duration: 1.2, ease: [0.33, 1, 0.68, 1] }}
-          >
-            <div className="flex flex-col md:flex-row md:items-end gap-4">
-              <motion.div
-                className="relative"
-                initial={{ y: 60, scale: 1.18, opacity: 0, letterSpacing: '0.2em' }}
-                animate={{ y: 0, scale: 1, opacity: 1, letterSpacing: '0.02em' }}
-                transition={{ duration: 1.2, delay: 0.5, ease: [0.33, 1, 0.68, 1] }}
-              >
-                <img src={Logo_Umbra_White} alt="Umbra Logo" className="w-[350px] h-[100px]  md:w-full h-auto xl:h-[220px] 2xl:h-[250px]" />
-              </motion.div>
-            </div>
-            {/* <motion.p
-              className="text-white/80 text-sm lg:text-base 2xl:text-lg my-6 max-w-xl"
-              initial={{ y: 40, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 1, delay: 0.8, ease: [0.33, 1, 0.68, 1] }}
-            >
-              Experience the perfect blend of European elegance and urban sophistication. Our culinary journey brings together traditional flavors with contemporary innovation, creating an unforgettable dining experience in the heart of the city.
-            </motion.p> */}
-          </motion.div>
+  return (
+    <>
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify(structuredData)}
+        </script>
+        {/* Preload critical images */}
+        <link 
+          rel="preload" 
+          as="image" 
+          href={images[0].src} 
+          fetchpriority="high"
+        />
+        <link 
+          rel="preload" 
+          as="image" 
+          href={images[1].src}
+        />
+      </Helmet>
+      
+      <header className="relative min-h-screen overflow-hidden bg-black-umbra" role="banner">
+        {/* Full screen image container */}
+        <div className="absolute inset-0 overflow-hidden" role="presentation">
+          <AnimatePresence initial={false} custom={direction} mode="sync">
+            <motion.img
+              key={currentImageIndex}
+              src={images[currentImageIndex].src}
+              alt={images[currentImageIndex].alt}
+              className="w-full h-full object-cover"
+              width={images[currentImageIndex].width}
+              height={images[currentImageIndex].height}
+              loading={currentImageIndex === 0 ? "eager" : "lazy"}
+              decoding={currentImageIndex === 0 ? "sync" : "async"}
+              custom={direction}
+              variants={slideVariants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{
+                x: { type: "tween", duration: 0.8, ease: "easeInOut" },
+                opacity: { duration: 0.2 }
+              }}
+            />
+          </AnimatePresence>
         </div>
 
-        {/* Decoration fragments - left side */}
-        {/* <DecorationFragment className="top-[90px] left-[30px] w-[10px] md:w-[19px] h-[130px]" motionStyle={{ x: xLeft, opacity: fade, scale }} />
-        <DecorationFragment className="top-[70px] right-[5px] md:left-[70px] w-[10px] md:w-[19px] h-[220px]" motionStyle={{ x: xLeft, opacity: fade, scale }} />
-        <DecorationFragment className="top-[120px] left-[110px] w-[10px] md:w-[19px] h-[140px] hidden md:block" motionStyle={{ x: xLeft, opacity: fade, scale }} /> */}
+        {/* Content container */}
+        <div className="relative z-10 flex flex-col justify-end items-start min-h-screen px-8 lg:px-24 pb-20">
+          <div className="relative flex flex-col items-start w-full">
+            <motion.div
+              className="relative z-20 text-left w-full flex flex-col items-start"
+              initial={{ y: 60, scale: 1.15, opacity: 0 }}
+              animate={{ y: 0, scale: 1, opacity: 1 }}
+              transition={{ duration: 1.2, ease: [0.33, 1, 0.68, 1] }}
+            >
+              <div className="flex flex-col md:flex-row md:items-end gap-4">
+                <motion.div
+                  className="relative"
+                  initial={{ y: 60, scale: 1.18, opacity: 0, letterSpacing: '0.2em' }}
+                  animate={{ y: 0, scale: 1, opacity: 1, letterSpacing: '0.02em' }}
+                  transition={{ duration: 1.2, delay: 0.5, ease: [0.33, 1, 0.68, 1] }}
+                >
+                  <img 
+                    src={Logo_Umbra_White} 
+                    alt="Umbra Restaurant Logo" 
+                    className="w-[350px] h-[100px] md:w-full h-auto xl:h-[220px] 2xl:h-[250px]"
+                    loading="eager"
+                    decoding="sync"
+                  />
+                </motion.div>
+              </div>
+              {/* <motion.p
+                className="text-white/80 text-sm lg:text-base 2xl:text-lg my-6 max-w-xl"
+                initial={{ y: 40, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 1, delay: 0.8, ease: [0.33, 1, 0.68, 1] }}
+              >
+                Experience the perfect blend of European elegance and urban sophistication. Our culinary journey brings together traditional flavors with contemporary innovation, creating an unforgettable dining experience in the heart of the city.
+              </motion.p> */}
+            </motion.div>
+          </div>
 
-        {/* Decoration fragments - right side */}
-        {/* <DecorationFragment className="top-[120px] right-[40px] w-[10px] md:w-[19px] h-[220px] hidden md:block" motionStyle={{ x: xRight, opacity: fade, scale }} />
-        <DecorationFragment className="top-[80px] right-[80px] w-[10px] md:w-[19px] h-[140px] hidden md:block" motionStyle={{ x: xRight, opacity: fade, scale }} />
-        <DecorationFragment className="top-[200px] right-[120px] w-[10px] md:w-[19px] h-[90px] hidden md:block" motionStyle={{ x: xRight, opacity: fade, scale }} />
-        <DecorationFragment className="top-[120px] right-[200px] w-[10px] md:w-[19px] h-[220px] hidden md:block" motionStyle={{ x: xRight, opacity: fade, scale }} />
-        <DecorationFragment className="top-[80px] right-[240px] w-[10px] md:w-[19px] h-[140px] hidden md:block" motionStyle={{ x: xRight, opacity: fade, scale }} />
-        <DecorationFragment className="top-[200px] right-[280px] w-[10px] md:w-[19px] h-[90px] hidden md:block" motionStyle={{ x: xRight, opacity: fade, scale }} /> */}
+          {/* Decoration fragments - left side */}
+          {/* <DecorationFragment className="top-[90px] left-[30px] w-[10px] md:w-[19px] h-[130px]" motionStyle={{ x: xLeft, opacity: fade, scale }} />
+          <DecorationFragment className="top-[70px] right-[5px] md:left-[70px] w-[10px] md:w-[19px] h-[220px]" motionStyle={{ x: xLeft, opacity: fade, scale }} />
+          <DecorationFragment className="top-[120px] left-[110px] w-[10px] md:w-[19px] h-[140px] hidden md:block" motionStyle={{ x: xLeft, opacity: fade, scale }} /> */}
+
+          {/* Decoration fragments - right side */}
+          {/* <DecorationFragment className="top-[120px] right-[40px] w-[10px] md:w-[19px] h-[220px] hidden md:block" motionStyle={{ x: xRight, opacity: fade, scale }} />
+          <DecorationFragment className="top-[80px] right-[80px] w-[10px] md:w-[19px] h-[140px] hidden md:block" motionStyle={{ x: xRight, opacity: fade, scale }} />
+          <DecorationFragment className="top-[200px] right-[120px] w-[10px] md:w-[19px] h-[90px] hidden md:block" motionStyle={{ x: xRight, opacity: fade, scale }} />
+          <DecorationFragment className="top-[120px] right-[200px] w-[10px] md:w-[19px] h-[220px] hidden md:block" motionStyle={{ x: xRight, opacity: fade, scale }} />
+          <DecorationFragment className="top-[80px] right-[240px] w-[10px] md:w-[19px] h-[140px] hidden md:block" motionStyle={{ x: xRight, opacity: fade, scale }} />
+          <DecorationFragment className="top-[200px] right-[280px] w-[10px] md:w-[19px] h-[90px] hidden md:block" motionStyle={{ x: xRight, opacity: fade, scale }} /> */}
 
 
-        {/* Bottom right decoration group */}
-        {/* <div className="absolute right-[50px] bottom-[20px] flex justify-between items-end px-2 z-10 pointer-events-none"> */}
-        {/* <DecorationFragment className="right-[70px] bottom-[0px] h-[240px] w-4 hidden md:block" delay={0.25} motionStyle={{ x: xLeft, opacity: fade, scale }} />
-          <DecorationFragment className="right-[120px] bottom-[40px] h-[150px] w-4 hidden md:block" delay={0.20} motionStyle={{ x: xRight, opacity: fade, scale }} />
-          <DecorationFragment className="right-[20px] bottom-[0px] h-[110px] w-4 hidden md:block" delay={0.20} motionStyle={{ x: xRight, opacity: fade, scale }} />
-        </div> */}
-      </div>
-    </header>
+          {/* Bottom right decoration group */}
+          {/* <div className="absolute right-[50px] bottom-[20px] flex justify-between items-end px-2 z-10 pointer-events-none"> */}
+          {/* <DecorationFragment className="right-[70px] bottom-[0px] h-[240px] w-4 hidden md:block" delay={0.25} motionStyle={{ x: xLeft, opacity: fade, scale }} />
+            <DecorationFragment className="right-[120px] bottom-[40px] h-[150px] w-4 hidden md:block" delay={0.20} motionStyle={{ x: xRight, opacity: fade, scale }} />
+            <DecorationFragment className="right-[20px] bottom-[0px] h-[110px] w-4 hidden md:block" delay={0.20} motionStyle={{ x: xRight, opacity: fade, scale }} />
+          </div> */}
+        </div>
+      </header>
+    </>
   )
 }
 

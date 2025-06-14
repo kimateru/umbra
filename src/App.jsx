@@ -9,8 +9,8 @@ import Footer from './components/Footer'
 const App = () => {
   return (
     <div className='font-avenir relative bg-white'>
-      <Navbar />  {/* check 70% */}
-      <Hero /> {/* check 60% */}
+      <Navbar /> 
+      <Hero /> 
       <div id="menu">
         <MenuProposal />
       </div>
@@ -20,7 +20,7 @@ const App = () => {
       <div id="contact">
         <Contacts />
       </div>
-      <Footer /> {/* check 90% */}
+      <Footer /> 
     </div >
   )
 }
