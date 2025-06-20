@@ -137,7 +137,7 @@ const Hero = () => {
     "url": "https://www.umbra-urban.md",
     "telephone": "+37378999107",
     "servesCuisine": "European",
-    "priceRange": "$$",
+    "priceRange": "$$$",
     "openingHoursSpecification": {
       "@type": "OpeningHoursSpecification",
       "dayOfWeek": [
