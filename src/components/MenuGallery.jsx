@@ -104,16 +104,13 @@ export default function MenuGallery() {
         <script type="application/ld+json">
           {JSON.stringify(structuredData)}
         </script>
-        {/* Preload first few images */}
-        {images.slice(0, 3).map((img, index) => (
-          <link 
-            key={img.id}
-            rel="preload" 
-            as="image" 
-            href={img.src}
-            fetchpriority={index === 0 ? "high" : "low"}
-          />
-        ))}
+        {/* Preload only the first image */}
+        <link 
+          rel="preload" 
+          as="image" 
+          href={images[0].src}
+          fetchpriority="high"
+        />
       </Helmet>
 
       <section 
@@ -124,7 +121,7 @@ export default function MenuGallery() {
           const [ref, inView] = useInView({
             threshold: 0.1,
             triggerOnce: true,
-            rootMargin: '50px 0px'
+            rootMargin: '100px 0px'
           });
 
           return (
@@ -133,7 +130,7 @@ export default function MenuGallery() {
               ref={ref}
               initial={{ opacity: 0, y: 50 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: idx * 0.1 }}
+              transition={{ duration: 0.6, delay: idx * 0.05 }}
               className="overflow-hidden rounded-2xl shadow-xl break-inside-avoid bg-neutral-800"
             >
               <img
@@ -141,9 +138,14 @@ export default function MenuGallery() {
                 alt={img.alt}
                 width={img.width}
                 height={img.height}
-                loading={idx < 3 ? "eager" : "lazy"}
-                decoding={idx < 3 ? "sync" : "async"}
+                loading={idx === 0 ? "eager" : "lazy"}
+                decoding={idx === 0 ? "sync" : "async"}
+                fetchPriority={idx === 0 ? "high" : "auto"}
                 className="w-full object-cover transition-transform duration-500 hover:scale-105"
+                style={{ 
+                  contentVisibility: 'auto',
+                  containIntrinsicSize: '400px 300px'
+                }}
               />
             </motion.article>
           );

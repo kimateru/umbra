@@ -95,22 +95,12 @@ const Hero = () => {
         <script type="application/ld+json">
           {JSON.stringify(structuredData)}
         </script>
-        {/* Preload critical images */}
+        {/* Preload only the first critical image */}
         <link 
           rel="preload" 
           as="image" 
           href={images[0].src} 
           fetchpriority="high"
-        />
-        <link 
-          rel="preload" 
-          as="image" 
-          href={images[1].src}
-        />
-        <link 
-          rel="preload" 
-          as="image" 
-          href={images[2].src}
         />
       </Helmet>
       
@@ -127,19 +117,26 @@ const Hero = () => {
             loop={true}
             speed={800}
             className="w-full h-full"
+            lazy={{
+              loadPrevNext: true,
+              loadPrevNextAmount: 1
+            }}
+            preloadImages={false}
           >
             {images.map((image, index) => (
               <SwiperSlide key={index}>
                 <img
                   src={image.src}
                   alt={image.alt}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover swiper-lazy"
                   width={image.width}
                   height={image.height}
-                  loading="eager"
-                  decoding="sync"
+                  loading={index === 0 ? "eager" : "lazy"}
+                  decoding={index === 0 ? "sync" : "async"}
                   fetchPriority={index === 0 ? "high" : "auto"}
+                  data-src={image.src}
                 />
+                <div className="swiper-lazy-preloader"></div>
               </SwiperSlide>
             ))}
           </Swiper>
