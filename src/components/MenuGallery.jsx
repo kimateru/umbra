@@ -5,77 +5,77 @@ import { Helmet } from 'react-helmet';
 const images = [
   {
     id: 1,
-    src: "/1.jpg",
+    src: "/galler/1.webp",
     alt: "Signature dish at Umbra Restaurant - European cuisine",
     width: 800,
     height: 600
   },
   {
     id: 2,
-    src: "/2.jpg",
+    src: "/gallery/2.webp",
     alt: "Fine dining experience at Umbra Restaurant",
     width: 800,
     height: 600
   },
   {
     id: 3,
-    src: "/3.jpg",
+    src: "/gallery/3.webp",
     alt: "Contemporary European dishes at Umbra",
     width: 800,
     height: 600
   },
   {
     id: 4,
-    src: "/4.jpg",
+    src: "/gallery/4.webp",
     alt: "Artistic presentation of Umbra's culinary creations",
     width: 800,
     height: 600
   },
   {
     id: 5,
-    src: "/5.jpg",
+    src: "/gallery/5.webp",
     alt: "Elegant dining atmosphere at Umbra Restaurant",
     width: 800,
     height: 600
   },
   {
     id: 6,
-    src: "/6.jpg",
+    src: "/gallery/6.webp",
     alt: "Specialty dishes from Umbra's European menu",
     width: 800,
     height: 600
   },
   {
     id: 7,
-    src: "/7.jpg",
+    src: "/gallery/7.webp",
     alt: "Modern European cuisine at Umbra Restaurant",
     width: 800,
     height: 600
   },
   {
     id: 8,
-    src: "/8.jpg",
+    src: "/gallery/8.webp",
     alt: "Culinary artistry at Umbra Restaurant",
     width: 800,
     height: 600
   },
   {
     id: 9,
-    src: "/9.jpg",
+    src: "/gallery/9.webp",
     alt: "Signature European dishes at Umbra",
     width: 800,
     height: 600
   },
   {
     id: 10,
-    src: "/10.jpg",
+    src: "/gallery/10.webp",
     alt: "Fine dining experience in Chisinau at Umbra",
     width: 800,
     height: 600
   },
   {
     id: 11,
-    src: "/11.jpg",
+    src: "/gallery/11.webp",
     alt: "Contemporary European cuisine presentation",
     width: 800,
     height: 600
