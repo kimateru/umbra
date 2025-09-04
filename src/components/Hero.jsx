@@ -139,7 +139,8 @@ const Hero = () => {
                 <div className="swiper-lazy-preloader"></div>
               </SwiperSlide>
             ))}
-          </Swiper>
+          </Swiper> 
+          
         </div>
 
         {/* Content container */}
