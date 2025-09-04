@@ -27,7 +27,7 @@ export default function MenuProposal() {
         <link 
           rel="preload" 
           as="image" 
-          href="/12.jpg"
+          href="/gallery/menu.webp"
           fetchpriority="high"
         />
       </Helmet>
@@ -36,10 +36,10 @@ export default function MenuProposal() {
         <div className="relative min-h-[90vh] flex flex-col items-center justify-center text-center px-4 py-32 sm:py-40">
           {/* Background image with overlay */}
           <img
-            src="/12.jpg"
+            src="/gallery/menu.webp"
             alt="Restaurant background"
-            className="absolute inset-0 w-full h-full object-cover z-0"
-            style={{ filter: 'brightness(0.40) blur(1px)' }}
+            className="absolute inset-0 w-full h-full object-cover z-0 object-center"
+            style={{ filter: 'brightness(0.50) blur(1px)' }}
             width={1920}
             height={1080}
             loading="eager"

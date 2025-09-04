@@ -5,7 +5,7 @@ import { Helmet } from 'react-helmet';
 const images = [
   {
     id: 1,
-    src: "/galler/1.webp",
+    src: "/gallery/1.webp",
     alt: "Signature dish at Umbra Restaurant - European cuisine",
     width: 800,
     height: 600
@@ -80,6 +80,7 @@ const images = [
     width: 800,
     height: 600
   }
+    
 ];
 
 export default function MenuGallery() {
@@ -116,7 +117,7 @@ export default function MenuGallery() {
       </Helmet>
 
       <section 
-        className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6 pt-5 lg:pt-20 pb-20"
+        className="columns-1 sm:columns-2 lg:columns-4 gap-6 space-y-6 pt-5 lg:pt-20 pb-20"
         aria-label="Restaurant menu gallery"
       >
         {images.map((img, idx) => {

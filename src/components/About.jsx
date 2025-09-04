@@ -1,8 +1,6 @@
 import React from 'react'
 import AnimatedCard from './AnimatedCard'
-import DecorationFragment from './DecorationFragment'
 import { Helmet } from 'react-helmet';
-// import PatternBackground from './PatternBackground'
 
 /*
 Краткое описание философии и концепции Umbra
@@ -15,7 +13,7 @@ const About = () => {
     "@type": "AboutPage",
     "name": "About Umbra Restaurant",
     "description": "Discover the story of Umbra Restaurant, where European elegance meets urban sophistication in the heart of Chisinau.",
-    "image": "https://www.umbra-urban.md/restaurant.jpg",
+    "image": "https://www.umbra-urban.md/gallery/about.webp",
     "isPartOf": {
       "@type": "Restaurant",
       "name": "Umbra Restaurant",
@@ -69,7 +67,7 @@ const About = () => {
               </div>
             </div>
             <AnimatedCard
-              img={"/8.jpg"}
+              img={"/gallery/about.webp"}
               color="#fff4e6"
               classes="w-[320px] h-[380px] sm:w-[400px] sm:h-[480px] md:w-[550px] md:h-[650px] lg:w-[700px] lg:h-[900px] xl:w-[700px] xl:h-[800px] 2xl:w-[900px] 2xl:h-[1100px] shadow-2xl"
             />

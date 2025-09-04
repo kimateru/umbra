@@ -133,7 +133,7 @@ const Contacts = () => {
           {/* Right Images */}
           <div className="w-full md:w-1/2 flex flex-col md:flex-row gap-4 lg:mt-8 md:mt-0">
             <motion.img
-              src="/8.jpg"
+              src="/hero/1.webp"
               alt="Bike near window"
               className="rounded-md object-cover w-full md:w-1/2 h-[400px]"
               initial={{ opacity: 0, x: 50 }}
@@ -141,7 +141,7 @@ const Contacts = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
             />
             <motion.img
-              src="/7.jpg"
+              src="/gallery/4.webp"
               alt="Couch with light"
               className="rounded-md object-cover w-full md:w-1/2 h-[400px] md:relative md:-top-24"
               initial={{ opacity: 0, x: 80 }}

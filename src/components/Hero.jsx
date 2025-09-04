@@ -40,6 +40,8 @@ const Hero = () => {
     "@context": "https://schema.org",
     "@type": "Restaurant",
     "name": "Umbra Restaurant",
+    "alternateName": ["Restaurant Chisinau", "Best Restaurant Chisinau", "European Restaurant Moldova"],
+    "description": "Best restaurant in Chisinau offering exceptional European cuisine in the heart of Moldova's capital. Fine dining experience with contemporary European dishes.",
     "image": [
       "https://www.umbra-urban.md/hero/1.webp",
       "https://www.umbra-urban.md/hero/2.webp",
@@ -49,7 +51,9 @@ const Hero = () => {
       "@type": "PostalAddress",
       "streetAddress": "Sfatul Țării 17",
       "addressLocality": "Chișinău",
-      "addressCountry": "MD"
+      "addressRegion": "Chișinău",
+      "addressCountry": "MD",
+      "postalCode": "2001"
     },
     "geo": {
       "@type": "GeoCoordinates",
@@ -58,8 +62,13 @@ const Hero = () => {
     },
     "url": "https://www.umbra-urban.md",
     "telephone": "+37378999107",
-    "servesCuisine": "European",
+    "servesCuisine": ["European", "Contemporary European", "Fine Dining"],
     "priceRange": "$$$",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "127"
+    },
     "openingHoursSpecification": {
       "@type": "OpeningHoursSpecification",
       "dayOfWeek": [
@@ -73,7 +82,11 @@ const Hero = () => {
       ],
       "opens": "11:00",
       "closes": "23:00"
-    }
+    },
+    "hasMenu": "https://www.umbra-urban.md/#menu",
+    "acceptsReservations": true,
+    "paymentAccepted": ["Cash", "Credit Card"],
+    "currenciesAccepted": "MDL"
   };
 
   return (
