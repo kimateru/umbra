@@ -114,7 +114,7 @@ export default function MenuGallery() {
       </Helmet>
 
       <section 
-        className="columns-1 sm:columns-2 lg:columns-3 gap-6 pt-5 lg:pt-20 pb-20 px-4 lg:px-8"
+        className="columns-1 sm:columns-2 lg:columns-4 gap-6 pt-5 lg:pt-20 pb-20 px-4 lg:px-8"
         aria-label="Restaurant menu gallery"
       >
         {images.map((img, idx) => {
