@@ -118,8 +118,8 @@ const Hero = () => {
             speed={800}
             className="w-full h-full"
             lazy={{
-              loadPrevNext: true,
-              loadPrevNextAmount: 1
+              loadPrevNext: false,
+              loadPrevNextAmount: 0
             }}
             preloadImages={false}
           >

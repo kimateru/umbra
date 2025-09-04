@@ -121,7 +121,7 @@ export default function MenuGallery() {
           const [ref, inView] = useInView({
             threshold: 0.1,
             triggerOnce: true,
-            rootMargin: '50px 0px'
+            rootMargin: '200px 0px'
           });
 
           return (
@@ -133,15 +133,22 @@ export default function MenuGallery() {
               transition={{ duration: 0.5, delay: idx * 0.1 }}
               className="overflow-hidden rounded-2xl shadow-xl break-inside-avoid bg-neutral-800 mb-6"
             >
-              <img
-                src={img.src}
-                alt={img.alt}
-                width={img.width}
-                height={img.height}
-                loading={idx === 0 ? "eager" : "lazy"}
-                decoding={idx === 0 ? "sync" : "async"}
-                className="w-full object-cover transition-transform duration-500 hover:scale-105"
-              />
+              {inView ? (
+                <img
+                  src={img.src}
+                  alt={img.alt}
+                  width={img.width}
+                  height={img.height}
+                  loading={idx < 3 ? "eager" : "lazy"}
+                  decoding={idx < 3 ? "sync" : "async"}
+                  className="w-full object-cover transition-transform duration-500 hover:scale-105"
+                />
+              ) : (
+                <div 
+                  className="w-full bg-neutral-700 animate-pulse"
+                  style={{ height: '300px' }}
+                />
+              )}
             </motion.article>
           );
         })}
