@@ -111,18 +111,18 @@ export default function MenuGallery() {
       >
         {images.map((img, idx) => {
           const [ref, inView] = useInView({
-            threshold: 0.1,
+            threshold: 0.05,
             triggerOnce: true,
-            rootMargin: '200px 0px'
+            rootMargin: '300px 0px'
           });
 
           return (
             <motion.article
               key={img.id}
               ref={ref}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              transition={{ duration: 0.3, delay: idx * 0.05 }}
               className="overflow-hidden rounded-2xl shadow-xl break-inside-avoid bg-neutral-800 mb-6"
             >
               {inView ? (
@@ -131,15 +131,21 @@ export default function MenuGallery() {
                   alt={img.alt}
                   width={img.width}
                   height={img.height}
-                  loading={idx < 3 ? "eager" : "lazy"}
-                  decoding={idx < 3 ? "sync" : "async"}
-                  className="w-full object-cover transition-transform duration-500 hover:scale-105"
+                  loading={idx < 2 ? "eager" : "lazy"}
+                  decoding={idx < 2 ? "sync" : "async"}
+                  className="w-full object-cover transition-transform duration-300 hover:scale-105"
+                  style={{
+                    contentVisibility: 'auto',
+                    containIntrinsicSize: '400px 300px'
+                  }}
                 />
               ) : (
                 <div 
-                  className="w-full bg-neutral-700 animate-pulse"
+                  className="w-full bg-gradient-to-br from-neutral-700 to-neutral-800 animate-pulse flex items-center justify-center"
                   style={{ height: '300px' }}
-                />
+                >
+                  <div className="text-neutral-500 text-sm">Loading...</div>
+                </div>
               )}
             </motion.article>
           );
@@ -148,3 +154,6 @@ export default function MenuGallery() {
     </>
   );
 } 
+
+
+

@@ -122,6 +122,8 @@ const Hero = () => {
               loadPrevNextAmount: 0
             }}
             preloadImages={false}
+            watchSlidesProgress={false}
+            watchSlidesVisibility={false}
           >
             {images.map((image, index) => (
               <SwiperSlide key={index}>
