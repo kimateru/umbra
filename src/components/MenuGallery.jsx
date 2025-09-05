@@ -111,18 +111,18 @@ export default function MenuGallery() {
       >
         {images.map((img, idx) => {
           const [ref, inView] = useInView({
-            threshold: 0.05,
+            threshold: 0.1,
             triggerOnce: true,
-            rootMargin: '300px 0px'
+            rootMargin: '200px 0px'
           });
 
           return (
             <motion.article
               key={img.id}
               ref={ref}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.3, delay: idx * 0.05 }}
+              transition={{ duration: 0.4, delay: idx * 0.08 }}
               className="overflow-hidden rounded-2xl shadow-xl break-inside-avoid bg-neutral-800 mb-6"
             >
               {inView ? (
@@ -134,10 +134,6 @@ export default function MenuGallery() {
                   loading={idx < 2 ? "eager" : "lazy"}
                   decoding={idx < 2 ? "sync" : "async"}
                   className="w-full object-cover transition-transform duration-300 hover:scale-105"
-                  style={{
-                    contentVisibility: 'auto',
-                    containIntrinsicSize: '400px 300px'
-                  }}
                 />
               ) : (
                 <div 
