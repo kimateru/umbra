@@ -72,15 +72,7 @@ const images = [
     alt: "Fine dining experience in Chisinau at Umbra",
     width: 800,
     height: 600
-  },
-  {
-    id: 11,
-    src: "/gallery/11.webp",
-    alt: "Contemporary European cuisine presentation",
-    width: 800,
-    height: 600
-  }
-    
+  },    
 ];
 
 export default function MenuGallery() {
