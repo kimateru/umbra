@@ -72,7 +72,7 @@ export default function MenuProposal() {
               Explore our curated gallery and discover the artistry, flavors, and passion behind every dish. Let your senses guide you through a visual feast before your first bite.
             </motion.p>
             <motion.a
-              href="/menu"
+              href="https://regency-restaurant.auronda.menu/"
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.3 }}
